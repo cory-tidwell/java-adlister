@@ -9,6 +9,7 @@ public class CounterServlet extends HttpServlet {
     private int counter = 0;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         String reset = request.getParameter("reset");
         if(reset != null) {
             if (reset.equals("0")) {
@@ -18,5 +19,6 @@ public class CounterServlet extends HttpServlet {
         counter += 1;
         response.getWriter().println("<h1>The count is " + counter + ".</h1>");
     }
+
 
 }
