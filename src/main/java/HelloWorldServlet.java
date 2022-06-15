@@ -1,19 +1,37 @@
 import javax.servlet.ServletException;
+
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello-world")
+@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<h1>Hello, World!</h1>");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        if (name == null) {
+        name = "World!";
+    } else if (name.equals("bgates")) {
+        response.sendRedirect("https://microsoft.com");
+        return;
     }
+        response.getWriter().println("<h1> Hello " + name + "</h1>");
+    }}
+//protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//    String name = request.getParameter("name");
+//    // if the name is null, it means that "name" was not present in the query
+//    // string, and here we'll provide a default value
+//    if (name == null) {
+//        name = "World!";
+//    } else if (name.equals("bgates")) {
+//        response.sendRedirect("https://microsoft.com");
+//        return;
+//    }
+//    // pass the value of the name variable to the view, and send the request
+//    // forward to the hello.jsp file
+//    request.setAttribute("name", name);
+//    request.getRequestDispatcher("/index.jsp").forward(request, response);
+//}
+//}
 
-}
