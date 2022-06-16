@@ -4,7 +4,9 @@ public class Ad {
     private String title;
     private String description;
 
+
     public Ad() {}
+
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
         this.userId = userId;
@@ -43,6 +45,3 @@ public class Ad {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
-}

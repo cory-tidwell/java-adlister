@@ -7,31 +7,41 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // redirect if the user is not an admin
+        // cast to a boolean data type to properly compare
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("/profile");
 
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            if (username.equals("admin") && password.equals("password")) {
-                response.sendRedirect("/profile.jsp");
-            }
+        } else {
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        boolean validAttempt = username.equals("admin") && password.equals("password");
+        boolean validAttempt2 = username.equals("cory") && password.equals("testtest");
 
 
 
-        //        String name = request.getParameter("name");
-//        if (name == null) {
-//            name = "World!";
-//        } else if (name.equals("bgates")) {
-//            response.sendRedirect("https://microsoft.com");
-//            return;
+        if (username.equals("admin") && password.equals("password")) {
+            request.getSession().setAttribute("user", username);
+            response.sendRedirect("/profile");
+        } else if (username.equals("tito") && password.equals("jackson")) {
+            request.getSession().setAttribute("user", username);
+            response.sendRedirect("/profile");
+        } else {
+            response.sendRedirect("/login");
+        }
+//        if (validAttempt) {
+//            response.sendRedirect("/profile");
+//        } else if (validAttempt2) {
+//            response.sendRedirect("/profile");
+//        } else {
+//            response.sendRedirect("/login");
 //        }
-//        response.getWriter().println("<h1> Hello " + name + "</h1>");
-
-
+    }
+}
