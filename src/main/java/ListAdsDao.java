@@ -22,7 +22,7 @@ public class ListAdsDao implements Ads {
                 1,
                 1,
                 "PS5 for sale",
-                "Never been open"
+                "Never been open! Used for home defense!"
         ));
         allAds.add(new Ad(
                 2,
@@ -47,6 +47,19 @@ public class ListAdsDao implements Ads {
 
     public void insertAd(Ad newAd) {
         this.allAds.add(newAd);
+    }
+
+    public static void main(String[] args) {
+
+//        Ads adsDao = DaoFactory.getAdsDao();
+//
+//        List<Ad> allAds = adsDao.allAds();
+//        Ad testAd = new Ad(6, 500L, "Test Ad", "This is a test.");
+//        adsDao.insertAd(testAd);
+//        for ( Ad ad : allAds) {
+//            System.out.println(ad.getTitle() + " " + ad.getDescription());
+//        }
+
     }
 
 
