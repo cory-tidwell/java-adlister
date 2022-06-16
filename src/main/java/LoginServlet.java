@@ -15,23 +15,28 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
 
         } else {
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        boolean validAttempt = username.equals("admin") && password.equals("password");
-        boolean validAttempt2 = username.equals("cory") && password.equals("testtest");
+        String user = request.getParameter("username");
+        String pass = request.getParameter("password");
+        boolean validAttempt = user.equals("admin") && pass.equals("password");
+        boolean validAttempt2 = user.equals("cory") && pass.equals("testtest");
+//        String name = user;
+//        if (name == null) {
+//            name = "World!";
+//        }
+//        response.getWriter().println("<h1> Hello " + name + "</h1>");
 
 
 
-        if (username.equals("admin") && password.equals("password")) {
-            request.getSession().setAttribute("user", username);
+        if (user.equals("admin") && pass.equals("password")) {
+            request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
-        } else if (username.equals("tito") && password.equals("jackson")) {
-            request.getSession().setAttribute("user", username);
+        } else if (user.equals("tito") && pass.equals("jackson")) {
+            request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
