@@ -2,13 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdsDao implements Ads {
-    private List<Ad> ads;
 
-    public List<Ad> all() {
-        if (ads == null) {
-            ads = generateAds();
+
+    private List<Ad> allAds;
+
+//    @Override
+//    public List<Ad> allAds() {
+//        return null;
+//    }
+
+    public List<Ad> allAds() {
+        if (allAds == null) {
+            allAds = generateAds();
         }
-        return ads;
+        return allAds;
     }
 
     public Long insert(Ad ad) {
@@ -24,31 +31,51 @@ public class ListAdsDao implements Ads {
     }
 
     private List<Ad> generateAds() {
-        List<Ad> ads = new ArrayList<>();
-        ads.add(new Ad(
-            1,
-            1,
-            "playstation for sale",
-            "This is a slightly used playstation"
+        List<Ad> allAds = new ArrayList<>();
+        allAds.add(new Ad(
+                1,
+                1,
+                "PS5 for sale",
+                "Never been open! Used for home defense!"
         ));
-        ads.add(new Ad(
-            2,
-            1,
-            "Super Nintendo",
-            "Get your game on with this old-school classic!"
+        allAds.add(new Ad(
+                2,
+                1,
+                "Frog Jerky",
+                "As title states!"
         ));
-        ads.add(new Ad(
-            3,
-            2,
-            "Junior Java Developer Position",
-            "Minimum 7 years of experience required. You will be working in the scripting language for Java, JavaScript"
+        allAds.add(new Ad(
+                3,
+                2,
+                "Beef Flavored Mountain Dew",
+                "Unreleased Mountain Dew beef flavor. Case of 24."
         ));
-        ads.add(new Ad(
-            4,
-            2,
-            "JavaScript Developer needed",
-            "Must have strong Java skills"
+        allAds.add(new Ad(
+                4,
+                2,
+                "Hitman",
+                "Point me in the right direction!"
         ));
-        return ads;
+        return allAds;
     }
+
+    public void insertAd(Ad newAd) {
+        this.allAds.add(newAd);
+    }
+
+    public static void main(String[] args) {
+
+//        Ads adsDao = DaoFactory.getAdsDao();
+//
+//        List<Ad> allAds = adsDao.allAds();
+//        Ad testAd = new Ad(6, 500L, "Test Ad", "This is a test.");
+//        adsDao.insertAd(testAd);
+//        for ( Ad ad : allAds) {
+//            System.out.println(ad.getTitle() + " " + ad.getDescription());
+//        }
+
+    }
+
+
+
 }
