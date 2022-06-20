@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.jstl.core.Config;
 import java.io.IOException;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
