@@ -23,6 +23,7 @@ public class RegisterServlet extends HttpServlet {
         // TODO: ensure the submitted information is valid
         // TODO: create a new user based off of the submitted information
         // TODO: if a user was successfully created, send them to their profile
+        System.out.println(request.getParameter("username"));
         User user = new User(
                 request.getParameter("username"),
                 request.getParameter("email"),
